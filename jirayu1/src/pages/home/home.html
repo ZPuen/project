@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      BMI
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  
+  
+  <ion-item>
+    <ion-input type="number" placeholder="น้ำหนัก" [(ngModel)]="weight"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="number" placeholder="ส่วนสูง" [(ngModel)]="height"></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+      <ion-input type="number" placeholder="อายุ" [(ngModel)]="age"></ion-input>
+    </ion-item>
+
+  <ion-item>
+  <ion-label>เพศ</ion-label>
+    <ion-select [(ngModel)]="gender">
+      <ion-option value="1">ชาย</ion-option>
+      <ion-option value="2">หญิง</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+      <ion-label>การออกกำลังกาย</ion-label>
+        <ion-select [(ngModel)]="exercise">
+          <ion-option value="1">ออกกำลังกายน้อยมากหรือไม่ออกเลย</ion-option>
+          <ion-option value="2">ออกกำลังกาย 1-3 ครั้ง ต่อสัปดาห์</ion-option>
+          <ion-option value="3">ออกกำลังกาย 4-5 ครั้ง ต่อสัปดาห์</ion-option>
+          <ion-option value="4">ออกกำลังกาย 6-7 ครั้ง ต่อสัปดาห์</ion-option>
+          <ion-option value="5">ออกกำลังกายวันละ 2 ครั้งขึ้นไป</ion-option>
+        </ion-select>
+      </ion-item>
+    
+  <button (click)="doCalculateBmi()" ion-button>คำนวณ</button>
+  <div *ngIf="person">
+    <ion-card>
+      <ion-card-header>
+        ค่าดัชนีมวลกาย
+      </ion-card-header>
+      <ion-card-content>
+        <p> น้ำหนัก :{{weight}} kg, ส่วนสูง : {{height}} cm</p>
+        <p>ค่าดัชนีมวลกาย : {{bmiValue | number :'2.2-3'}}</p>
+        <p><strong>อยู่ในเกณท์ {{bmiMessage}}</strong></p>
+        <p>การเผาผลาญพลังงาน : {{bmr}}</p>
+        <p>ค่าของพลังงานในแต่ละวัน: {{Tdee | number :'2.2-3'}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+</ion-content>
